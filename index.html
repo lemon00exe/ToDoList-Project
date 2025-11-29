@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StudyBoard — To-Do Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="title">
+        <h1 id="appName">StudyBoard</h1>
+        <p class="subtitle">Focus. Plan. Finish.</p>
+      </div>
+
+      <div class="top-right">
+        <div id="today" class="today"></div>
+        <div id="quote" class="quote fade"></div>
+      </div>
+    </header>
+
+    <main class="main">
+      <aside class="sidebar" aria-label="Sidebar">
+        <div class="profile">
+          <div class="avatar">👋</div>
+          <div class="profile-info">
+            <div id="greeting">Hi, Student!</div>
+            <button id="editNameBtn" class="edit-name">Edit name</button>
+          </div>
+        </div>
+
+        <nav class="sidebar-section categories" aria-label="Categories">
+          <button class="cat-btn active" data-cat="All">All</button>
+          <button class="cat-btn" data-cat="Study">Study</button>
+          <button class="cat-btn" data-cat="Personal">Personal</button>
+          <button class="cat-btn" data-cat="Project">Project</button>
+          <button class="cat-btn" data-cat="Notes">Notes</button>
+        </nav>
+
+        <div class="sidebar-section stats" aria-hidden="false">
+          <h4>Quick stats</h4>
+          <div class="progress-wrap">
+            <div class="progress-label"><span id="doneCount">0</span>/<span id="totalCount">0</span> done</div>
+            <div class="progress-bar"><div id="progressFill"></div></div>
+          </div>
+        </div>
+
+        <div class="sidebar-section pom-wrap">
+          <h4>Pomodoro</h4>
+          <div class="pomodoro">
+            <div id="pomodoroTimer">25:00</div>
+            <div class="pom-controls">
+              <button id="pomStart">Start</button>
+              <button id="pomStop">Stop</button>
+            </div>
+            <small id="pomMode">Work</small>
+          </div>
+        </div>
+
+        <div class="sidebar-section small">
+          <small>Made By Kelompok CCG</small>
+        </div>
+      </aside>
+
+      <section class="content" aria-live="polite">
+        <div class="controls">
+          <form id="taskForm" class="task-form" onsubmit="return false;">
+            <input id="taskName" type="text" placeholder="What do you need to do?" required />
+            <input id="taskDate" type="date" required />
+            <select id="taskCategory">
+              <option value="Study">Study</option>
+              <option value="Personal">Personal</option>
+              <option value="Project">Project</option>
+              <option value="Notes">Notes</option>
+            </select>
+            <button id="addTaskBtn" type="submit">Add</button>
+          </form>
+
+          <div class="filter-row">
+            <input id="searchInput" placeholder="Search tasks..." />
+            <select id="sortSelect">
+              <option value="asc">Sort: Earliest</option>
+              <option value="desc">Sort: Latest</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="taskList" class="task-list">
+        </div>
+
+        <div id="emptyHint" class="empty-hint hidden">
+          <div class="emoji">📚</div>
+          <p>No tasks yet — relax or add something to get things done 😌</p>
+        </div>
+      </section>
+
+      <aside class="right-panel" aria-label="Focus zone">
+        <div class="panel-card upcoming">
+          <h4>Upcoming Tasks</h4>
+          <div id="upcomingList" class="upcoming-list">
+          </div>
+        </div>
+
+        <div class="panel-card note">
+          <h4>Daily Note</h4>
+          <textarea id="dailyNote" placeholder="Write a quick note..."></textarea>
+          <div class="note-actions">
+            <button id="clearNote">Clear</button>
+            <small id="noteSaved" class="muted">Saved locally</small>
+          </div>
+        </div>
+
+        <div class="panel-card vibe">
+          <h4>Vibe of the Day</h4>
+          <p>Need focus music? Try this playlist:</p>
+          <a id="vibeLink" href="https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO" target="_blank" rel="noopener">Chill Lofi / Focus 🎧</a>
+        </div>
+
+        <div class="panel-card timebox">
+          <h4>Local Time</h4>
+          <div id="localTime" class="local-time">--:--</div>
+          <div id="dayIcon" class="day-icon">☀️</div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <div id="deleteModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <h3 id="modalTitle">Hapus Tugas</h3>
+      <p id="modalBody">Apakah kamu yakin ingin menghapus tugas ini?</p>
+      <div class="modal-actions">
+        <button id="cancelDelete" class="btn btn-cancel">Batal</button>
+        <button id="confirmDelete" class="btn btn-delete">Hapus</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

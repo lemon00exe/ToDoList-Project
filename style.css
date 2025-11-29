@@ -30,12 +30,12 @@ body{
 .quote.fade-out{ opacity:0; }
 
 /* ===== main layout (3 columns) ===== */
-.main{ display:grid; grid-template-columns:260px 1fr 320px; gap:20px; align-items:start; }
+.main{ display:grid; grid-template-columns:260px 1fr 320px; gap:20px; align-items:stretch; }
 
 /* ===== sidebar ===== */
 .sidebar{
   background:var(--card); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
-  height: calc(100vh - 180px); overflow:auto;
+  height: auto; overflow:auto;
 }
 .profile{ display:flex; gap:12px; align-items:center; margin-bottom:12px; }
 .avatar{ font-size:1.6rem; background:linear-gradient(90deg, #fff, #fffaf2); width:54px; height:54px; display:flex; align-items:center; justify-content:center; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }

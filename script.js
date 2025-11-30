@@ -47,12 +47,14 @@ let pomMode = localStorage.getItem('pomMode') || 'Work';
 
 /* QUOTES */
 const quotes = [
-  "Focus on progress, not perfection.",
-  "Small steps every day.",
-  "Plan today, accomplish tomorrow.",
-  "Consistency beats intensity.",
-  "Start before you're ready.",
-  "One idea + one hour = progress."
+  "Aku sih masih kuat, yang gak kuat itu sinyal",
+  "Lagi cari yang serius, serius sayang sama aku maksudnya",
+  "Bangun pagi itu susah, tapi tidur lagi itu bakat",
+  "Target hari ini: hidup",
+  "Hidup itu keras, tapi aku lebih keras",
+  "Gue tuh bukan pemalas, gue cuma hemat energi",
+  "Tuhan, kalo rezeki gue nyasar ke yang lain, semoga orangnya jujur balikinnya.",
+  "Otak: pengen produktif. Badan: rebahan dulu gak sih."
 ];
 
 /* ========= UTIL ========= */

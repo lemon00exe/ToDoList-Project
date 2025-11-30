@@ -219,7 +219,7 @@ clearNoteBtn.addEventListener('click', () => {
 });
 
 /* ========= VIBE LINK (placeholder) ========= */
-vibeLink.href = 'https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO';
+vibeLink.href = 'https://open.spotify.com/playlist/66ZEBaxqAIufBoSKoQIUCM?si=7ba5b5425896479c';
 
 /* ========= LOCAL TIME & ICON ========= */
 function updateLocalTime(){

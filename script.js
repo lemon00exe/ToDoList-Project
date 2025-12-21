@@ -1,4 +1,3 @@
-
 /* ========= SELECTORS & STATE ========= */
 const taskForm = document.getElementById('taskForm');
 const taskName = document.getElementById('taskName');
@@ -21,7 +20,6 @@ const clearNoteBtn = document.getElementById('clearNote');
 const vibeLink = document.getElementById('vibeLink');
 
 const localTimeEl = document.getElementById('localTime');
-const dayIconEl = document.getElementById('dayIcon');
 
 const greetingEl = document.getElementById('greeting');
 const editNameBtn = document.getElementById('editNameBtn');
@@ -61,7 +59,7 @@ const quotes = [
 /* ========= UTIL ========= */
 function saveTasks(){ localStorage.setItem('tasks', JSON.stringify(tasks)); renderTasks(); }
 function formatDateDisplay(iso){ if(!iso) return ''; const d = new Date(iso); return `${String(d.getDate()).padStart(2,'0')} - ${String(d.getMonth()+1).padStart(2,'0')} - ${d.getFullYear()}`; }
-function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]); }
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({'&':'&','<':'<','>':'>','"':'"',"'":'&apos;'})[c]); }
 
 /* ========= RENDER TASKS ========= */
 function renderTasks(){
@@ -222,16 +220,48 @@ clearNoteBtn.addEventListener('click', () => {
 /* ========= VIBE LINK (placeholder) ========= */
 vibeLink.href = 'https://open.spotify.com/playlist/66ZEBaxqAIufBoSKoQIUCM?si=7ba5b5425896479c';
 
-/* ========= LOCAL TIME & ICON ========= */
+/* ========= LOCAL TIME & ICON (PERBAIKAN LOGIKA) ========= */
 function updateLocalTime(){
   const now = new Date();
-  const hh = String(now.getHours()).padStart(2,'0');
-  const mm = String(now.getMinutes()).padStart(2,'0');
-  localTimeEl.textContent = `${hh}:${mm}`;
-  // day/night icon
-  const h = now.getHours();
-  if(h >= 6 && h < 18) dayIconEl.textContent = '☀️'; else dayIconEl.textContent = '🌙';
+  const hour = now.getHours();
+  const minute = String(now.getMinutes()).padStart(2,'0');
+
+  localTimeEl.textContent = `${String(hour).padStart(2,'0')}:${minute}`;
+
+  const skyBox = document.getElementById('skyBox');
+  if (!skyBox) return;
+
+  // Reset semua class
+  skyBox.className = 'sky-box';
+  
+  // Tentukan Waktu & Posisi Teks
+  let positionLeft = '50%'; // Default
+
+  if (hour >= 5 && hour < 11) {
+    skyBox.classList.add('morning');
+    positionLeft = '20%'; // Pagi: Teks di kiri
+  } 
+  else if (hour >= 11 && hour < 15) {
+    skyBox.classList.add('noon');
+    positionLeft = '50%'; // Siang: Teks di tengah
+  } 
+  else if (hour >= 15 && hour < 18) {
+    skyBox.classList.add('afternoon');
+    positionLeft = '80%'; // Sore: Teks di kanan
+  } 
+  else if (hour >= 18 && hour < 20) {
+    skyBox.classList.add('sunset');
+    positionLeft = '50%'; // Sunset: Balik tengah
+  } 
+  else {
+    skyBox.classList.add('night');
+    positionLeft = '50%'; // Malam: Tengah
+  }
+
+  // Terapkan posisi ke teks jam (style.left)
+  localTimeEl.style.left = positionLeft;
 }
+// Jalankan tiap detik
 setInterval(updateLocalTime, 1000);
 updateLocalTime();
 

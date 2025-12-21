@@ -23,7 +23,7 @@
     <main class="main">
       <aside class="sidebar" aria-label="Sidebar">
         <div class="profile">
-          <div class="avatar">👋</div>
+          <div class="avatar"></div>
           <div class="profile-info">
             <div id="greeting">Hi, Student!</div>
             <button id="editNameBtn" class="edit-name">Edit name</button>
@@ -41,7 +41,6 @@
               <option value="sakura">Sakura</option>
           </select>
         </div>
-
 
         <nav class="sidebar-section categories" aria-label="Categories">
           <button class="cat-btn active" data-cat="All">All</button>
@@ -131,9 +130,17 @@
 
         <div class="panel-card timebox">
           <h4>Local Time</h4>
-          <div id="localTime" class="local-time">--:--</div>
-          <div id="dayIcon" class="day-icon">☀️</div>
+          <div class="sky-box" id="skyBox">
+            <div id="localTime" class="local-time inside-sky">--:--</div>
+            
+            <div class="sun"></div>
+            <div class="moon"></div>
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="grass"></div>
+          </div>
         </div>
+
       </aside>
     </main>
   </div>

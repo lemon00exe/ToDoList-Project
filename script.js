@@ -1,3 +1,4 @@
+
 /* ========= SELECTORS & STATE ========= */
 const taskForm = document.getElementById('taskForm');
 const taskName = document.getElementById('taskName');
@@ -294,3 +295,21 @@ function setToday(){
 setToday();
 setQuotePeriodically();
 renderTasks();
+
+/* ========= THEME SWITCHER ========= */
+const themeSelect = document.getElementById('themeSelect');
+const root = document.documentElement;
+
+// 1. Cek local storage saat load
+const savedTheme = localStorage.getItem('appTheme') || 'default';
+root.setAttribute('data-theme', savedTheme);
+if(themeSelect) themeSelect.value = savedTheme;
+
+// 2. Event Listener saat ganti pilihan
+if(themeSelect) {
+  themeSelect.addEventListener('change', (e) => {
+    const val = e.target.value;
+    root.setAttribute('data-theme', val); // Set atribut ke tag <html>
+    localStorage.setItem('appTheme', val); // Simpan
+  });
+}

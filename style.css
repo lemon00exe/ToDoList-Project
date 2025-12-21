@@ -7,12 +7,30 @@
   --shadow: 0 12px 36px rgba(20,20,20,0.04);
   --radius:12px;
 }
+:root{
+  --text-main: #222222;
+  --muted: #6b6b6b;
+}
+
+
+/* ===== body ===== */
 body{
   font-family: Inter, Poppins, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   background: linear-gradient(180deg,#fffdf7 0%, #fffaf1 100%);
-  min-height:100vh; color:#222; padding:28px;
+  min-height:100vh;
+  color: var(--text-main, #222); /* ⬅️ PENTING */
+  padding:28px;
   -webkit-font-smoothing:antialiased;
 }
+.muted,
+.subtitle,
+.progress-label,
+.task-left .meta,
+.quote,
+.note-actions small {
+  color: var(--muted);
+}
+
 
 /* ===== app wrapper ===== */
 .app{ max-width:1300px; margin:0 auto; }
@@ -38,10 +56,13 @@ body{
   height: auto; overflow:auto;
 }
 .profile{ display:flex; gap:12px; align-items:center; margin-bottom:12px; }
-.avatar{ font-size:1.6rem; background:linear-gradient(90deg, #fff, #fffaf2); width:54px; height:54px; display:flex; align-items:center; justify-content:center; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
+.avatar{ font-size: 0; position: relative; background:linear-gradient(135deg, var(--accent), var(--accent-2)); width:54px; height:54px; display:flex; align-items:center; justify-content:center; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.04); }
 .profile-info{ flex:1; }
 #greeting{ font-weight:700; }
 .edit-name{ margin-top:6px; background:transparent; border:none; color:var(--muted); cursor:pointer; font-size:0.85rem; }
+.avatar::after {
+  color: #ffffff;
+}
 
 /* categories */
 .cat-btn{
@@ -142,3 +163,143 @@ body{
   .top-right{ display:block; text-align:left; margin-top:10px; }
   .task-form input[type="text"]{ flex-basis:100%; }
 }
+
+/* Styling untuk Theme Selector */
+.theme-selector {
+  margin-bottom: 16px;
+  padding: 0 4px;
+}
+.theme-select {
+  width: 100%;
+  margin-top: 6px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+}
+
+/* Update warna teks elemen lain agar mengikuti tema */
+.title h1, .today, .modal-card h3 { color: var(--text-main); }
+.cat-btn { color: var(--text-main); }
+.task-form input, .task-form select, .filter-row input, .filter-row select, #dailyNote {
+  background: var(--card);
+  color: var(--text-main);
+  border-color: var(--border);
+}
+.upcoming-item {
+  background: var(--bg);
+  border-color: var(--border);
+  color: var(--text-main);
+}
+
+/* tema */
+[data-theme="galaxy"] {
+  --bg: #0f0c29;
+  --card: #1b1f3b;
+  --accent: #a855f7;
+  --accent-2: #6366f1;
+  --text-main: #e5e7eb;
+  --muted: #a1a1aa;
+  --border: rgba(255,255,255,0.1);
+}
+
+[data-theme="galaxy"] body {
+  background: radial-gradient(circle at top, #312e81, #0f0c29);
+}
+
+[data-theme="coffee"] {
+  --bg: #f5ebe0;
+  --card: #fffaf5;
+  --accent: #7c3f1d;
+  --accent-2: #a16207;
+  --text-main: #3f2d1c;
+  --muted: #7c6f64;
+  --border: #e5d3c3;
+}
+
+[data-theme="coffee"] body {
+  background: linear-gradient(180deg, #fef6ee, #f5ebe0);
+}
+
+[data-theme="forest"] {
+  --bg: #e6f4ea;
+  --card: #f9fffa;
+  --accent: #16a34a;
+  --accent-2: #22c55e;
+  --text-main: #14532d;
+  --muted: #4b5563;
+  --border: #d1e7d3;
+}
+
+[data-theme="forest"] body {
+  background: linear-gradient(180deg, #f0f9f4, #e6f4ea);
+}
+
+[data-theme="sakura"] {
+  --bg: #fff1f5;
+  --card: #ffffff;
+  --accent: #fb7185;
+  --accent-2: #f472b6;
+  --text-main: #831843;
+  --muted: #be185d;
+  --border: #fbcfe8;
+}
+
+[data-theme="cyber"] {
+  --bg: #0b0f1a;
+  --card: #111827;
+  --accent: #22d3ee;
+  --accent-2: #38bdf8;
+  --text-main: #e5e7eb;
+  --muted: #94a3b8;
+}
+
+[data-theme="cyber"] body {
+  background: linear-gradient(180deg, #0f172a, #0b0f1a);
+}
+
+[data-theme="sakura"] body {
+  background: linear-gradient(180deg, #fff5f7, #ffe4e6);
+}
+
+[data-theme="forest"] .avatar::after {
+  content: "🌿";
+}
+
+[data-theme="cyber"] .avatar::after {
+  content: "🤖";
+}
+
+[data-theme="galaxy"] .avatar::after {
+  content: "🌌";
+}
+
+[data-theme="coffee"] .avatar::after {
+  content: "☕";
+}
+
+[data-theme="sakura"] .avatar::after {
+  content: "🌸";
+}
+
+.avatar::after {
+  content: "🙂";
+  font-size: 1.6rem;
+}
+[data-theme="cyber"]  .avatar::after { content: "🤖"; }
+[data-theme="forest"] .avatar::after { content: "🌿"; }
+[data-theme="galaxy"] .avatar::after { content: "🛸"; }
+[data-theme="coffee"] .avatar::after { content: "☕"; }
+[data-theme="sakura"] .avatar::after { content: "🪭"; }
+
+/* === DARK THEMES TEXT COLOR === */
+[data-theme="cyber"],
+[data-theme="galaxy"] {
+  --text-main: #ffffff;
+  --muted: #d1d5db;
+}
+
+

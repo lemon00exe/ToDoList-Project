@@ -265,26 +265,6 @@ body{
   background: linear-gradient(180deg, #fff5f7, #ffe4e6);
 }
 
-[data-theme="forest"] .avatar::after {
-  content: "🌿";
-}
-
-[data-theme="cyber"] .avatar::after {
-  content: "🤖";
-}
-
-[data-theme="galaxy"] .avatar::after {
-  content: "🌌";
-}
-
-[data-theme="coffee"] .avatar::after {
-  content: "☕";
-}
-
-[data-theme="sakura"] .avatar::after {
-  content: "🌸";
-}
-
 .avatar::after {
   content: "🙂";
   font-size: 1.6rem;
@@ -292,7 +272,7 @@ body{
 [data-theme="cyber"]  .avatar::after { content: "🤖"; }
 [data-theme="forest"] .avatar::after { content: "🌿"; }
 [data-theme="galaxy"] .avatar::after { content: "🛸"; }
-[data-theme="coffee"] .avatar::after { content: "☕"; }
+[data-theme="coffee"] .avatar::after { content: "🍰"; }
 [data-theme="sakura"] .avatar::after { content: "🪭"; }
 
 /* === DARK THEMES TEXT COLOR === */

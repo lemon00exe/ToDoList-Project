@@ -220,7 +220,7 @@ clearNoteBtn.addEventListener('click', () => {
 /* ========= VIBE LINK (placeholder) ========= */
 vibeLink.href = 'https://open.spotify.com/playlist/66ZEBaxqAIufBoSKoQIUCM?si=7ba5b5425896479c';
 
-/* ========= LOCAL TIME & ICON (PERBAIKAN LOGIKA) ========= */
+/* ========= LOCAL TIME & ICON (DIUBAH MENJADI STATIS) ========= */
 function updateLocalTime(){
   const now = new Date();
   const hour = now.getHours();
@@ -231,35 +231,17 @@ function updateLocalTime(){
   const skyBox = document.getElementById('skyBox');
   if (!skyBox) return;
 
-  // Reset semua class
+  // Tetap update background langit berdasarkan waktu
   skyBox.className = 'sky-box';
   
-  // Tentukan Waktu & Posisi Teks
-  let positionLeft = '50%'; // Default
+  if (hour >= 5 && hour < 11) skyBox.classList.add('morning');
+  else if (hour >= 11 && hour < 15) skyBox.classList.add('noon');
+  else if (hour >= 15 && hour < 18) skyBox.classList.add('afternoon');
+  else if (hour >= 18 && hour < 20) skyBox.classList.add('sunset');
+  else skyBox.classList.add('night');
 
-  if (hour >= 5 && hour < 11) {
-    skyBox.classList.add('morning');
-    positionLeft = '20%'; // Pagi: Teks di kiri
-  } 
-  else if (hour >= 11 && hour < 15) {
-    skyBox.classList.add('noon');
-    positionLeft = '50%'; // Siang: Teks di tengah
-  } 
-  else if (hour >= 15 && hour < 18) {
-    skyBox.classList.add('afternoon');
-    positionLeft = '80%'; // Sore: Teks di kanan
-  } 
-  else if (hour >= 18 && hour < 20) {
-    skyBox.classList.add('sunset');
-    positionLeft = '50%'; // Sunset: Balik tengah
-  } 
-  else {
-    skyBox.classList.add('night');
-    positionLeft = '50%'; // Malam: Tengah
-  }
-
-  // Terapkan posisi ke teks jam (style.left)
-  localTimeEl.style.left = positionLeft;
+  // Paksa posisi teks di tengah secara permanen
+  localTimeEl.style.left = '50%';
 }
 // Jalankan tiap detik
 setInterval(updateLocalTime, 1000);

@@ -85,12 +85,44 @@ body{
 /* ===== content ===== */
 .content{ background:var(--card); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow); min-height:520px; display:flex; flex-direction:column; }
 .controls{ margin-bottom:8px; }
-.task-form{ display:flex; gap:8px; margin-bottom:12px; flex-wrap:wrap; align-items:center; }
-.task-form input[type="text"]{ flex:2; padding:12px; border-radius:10px; border:1px solid #f0f0f0; }
-.task-form input[type="date"]{ padding:10px 8px; border-radius:10px; border:1px solid #f0f0f0; }
-.task-form select{ padding:10px 8px; border-radius:10px; border:1px solid #f0f0f0; }
-.task-form button{ padding:10px 14px; border-radius:10px; border:none; background:var(--accent); color:#222; font-weight:700; cursor:pointer; box-shadow: 0 8px 22px rgba(255,168,107,0.12); }
+.task-form { 
+  display: flex; 
+  gap: 8px; 
+  margin-bottom: 12px; 
+  flex-wrap: wrap; 
+  align-items: center; 
+}
 
+.task-form input[type="text"],
+.task-form input[type="date"],
+.task-form select {
+  padding: 12px; 
+  border-radius: 10px; 
+  
+
+  background: var(--card);     
+  color: var(--text-main);    
+  border: 1px solid var(--border);
+  
+  flex: 1; 
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.task-form input[type="text"] {
+  flex: 2; 
+}
+
+.task-form button { 
+  padding: 10px 14px; 
+  border-radius: 10px; 
+  border: none; 
+  background: var(--accent); 
+  color: #222; 
+  font-weight: 700; 
+  cursor: pointer; 
+  box-shadow: 0 8px 22px rgba(255,168,107,0.12); 
+}
 /* filter row */
 .filter-row{ display:flex; gap:8px; align-items:center; margin-bottom:8px; }
 .filter-row input{ flex:1; padding:10px; border-radius:10px; border:1px solid #f0f0f0; }
@@ -98,14 +130,30 @@ body{
 
 /* task list */
 .task-list{ display:flex; flex-direction:column; gap:12px; margin-top:8px; overflow:auto; padding-right:6px; flex:1; }
-.task-card{
-  display:flex; justify-content:space-between; align-items:center; gap:12px;
-  padding:14px; border-radius:12px; background:linear-gradient(180deg,#ffffff, #fffdfd);
-  box-shadow: 0 12px 36px rgba(20,20,20,0.04); border-left:6px solid transparent;
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  /* Ganti background linear-gradient putih dengan variabel: */
+  background: var(--card); 
+  color: var(--text-main);
+  box-shadow: var(--shadow);
+  border-left: 6px solid transparent;
+  transition: background 0.3s ease, color 0.3s ease;
 }
+
 .task-left{ display:flex; align-items:center; gap:12px; flex:1; min-width:0; }
 .task-left label{ display:flex; align-items:center; gap:12px; font-weight:700; cursor:pointer; min-width:0; }
-.task-left .title{ font-size:1rem; white-space:nowrap; text-overflow:ellipsis; overflow:hidden; }
+.task-left .title { 
+  font-size: 1rem; 
+  white-space: nowrap; 
+  text-overflow: ellipsis; 
+  overflow: hidden; 
+  color: var(--text-main); 
+}
 .task-left .meta{ color:var(--muted); font-size:0.85rem; }
 .task-actions{ display:flex; gap:8px; align-items:center; }
 .icon-btn{ background:transparent; border:none; cursor:pointer; padding:6px; border-radius:8px; font-size:1rem; }
@@ -125,8 +173,24 @@ body{
 .right-panel{ background:transparent; display:flex; flex-direction:column; gap:12px; height: calc(100vh - 180px); overflow:auto; }
 .panel-card{ background:var(--card); border-radius:12px; padding:12px; box-shadow:var(--shadow); min-height:80px; }
 .upcoming-list{ display:flex; flex-direction:column; gap:8px; }
-.upcoming-item{ display:flex; justify-content:space-between; gap:8px; align-items:center; padding:8px; border-radius:8px; background:#fffaf6; border:1px solid rgba(255,168,107,0.06); }
-#dailyNote{ width:100%; min-height:90px; padding:10px; border-radius:8px; border:1px solid #f0f0f0; resize:vertical; }
+.upcoming-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  padding: 8px;
+  border-radius: 8px;
+  /* Gunakan --bg atau transparansi agar tidak menabrak teks */
+  background: rgba(255, 255, 255, 0.05); 
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+#dailyNote {
+  background: var(--card);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
 .note-actions{ display:flex; justify-content:space-between; align-items:center; margin-top:8px; }
 .note-actions .muted{ color:var(--muted); font-size:0.85rem; }
 
